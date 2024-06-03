@@ -1,0 +1,13 @@
+
+{
+// compunere xpath pentru a selecta toate elementele care ne intereseaza
+const targetText = " Informatii inmatriculare";
+const xpathText = ".//fieldset[.//legend[text()='" + targetText + "']]//label";
+const labels = $x(xpathText);
+
+// Concateneaz textele
+const concatenatedText = labels.reduce((acc, label) => {return acc + label.textContent.trim() + "\n-";}, '');
+
+// print info
+console.log(targetText + ":\n-" + concatenatedText.trim());
+}
