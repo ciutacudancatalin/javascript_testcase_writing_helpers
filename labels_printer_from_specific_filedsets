@@ -1,13 +1,10 @@
+var targetTextNew = "Suma asigurata";
+var xpathTextNew = ".//fieldset[.//legend[text()='" + targetTextNew + "']]//label";
+var labelsNew = $x(xpathTextNew);
 
-{
-// compunere xpath pentru a selecta toate elementele care ne intereseaza
-const targetText = " Informatii inmatriculare";
-const xpathText = ".//fieldset[.//legend[text()='" + targetText + "']]//label";
-const labels = $x(xpathText);
 
 // Concateneaz textele
-const concatenatedText = labels.reduce((acc, label) => {return acc + label.textContent.trim() + "\n-";}, '');
+var concatenatedTextNew = labelsNew.reduce((acc, labelNew) => {return acc + labelNew.textContent.trim().replace(":","").replace("\n","").replace("                        "," ") + "\n-";}, '');
 
 // print info
-console.log(targetText + ":\n-" + concatenatedText.trim());
-}
+console.log("Userul are precompletate campurile din sectiunea " + targetTextNew + ":\n-" + concatenatedTextNew.trim().slice(0,-2));
